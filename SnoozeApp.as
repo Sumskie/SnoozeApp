@@ -1,7 +1,12 @@
 ﻿package {
 	
+	//Firebase ID: snoozeapp-88b67
+	
 	import com.myflashlab.air.extensions.dependency.OverrideAir;
 	import com.myflashlab.air.extensions.localNotifi.*;
+	
+	import com.myflashlab.air.extensions.firebase.core.Firebase;
+	import com.myflashlab.air.extensions.firebase.db.*;
 	
 	import starling.core.Starling;
 	import starling.display.Sprite;
@@ -55,8 +60,7 @@
 			appContainer.height = Starling.current.stage.stageHeight;
 			this.addChild(appContainer);
 			
-			
-			
+
 			
 			//Adding the text input feather function
 			var Username:TextInput = new TextInput();
@@ -76,23 +80,13 @@
 			//Let's use this as the login button
 			appContainer.addChild(button);
 			
-			// this is the first thing you should do to initialize the notification ANE
-			Notification.init();
-			trace("Notification ANE loaded...");
-
-			// Start listening to this event as soon as possible. If your app opens because of the notification has been
-			// touched from the status bar, this listener will be called to let you know about it.
-			Notification.listener.addEventListener(NotificationEvents.NOTIFICATION_INVOKED, onNotifiInvoked);
-     
-			// For iOS, create a NotificationIosSettings and for Android create a NotificationAndroidSettings instance
-			var setting:NotificationIosSettings = new NotificationIosSettings();
-			setting.notificationId = 3; // setting new notifications with the same id will override the old one
-			setting.payload = "payload data";
-			setting.title = "the title";
-			setting.message = "the message";
-			setting.time = new Date().getTime() + 5000; // means 5 seconds from now
-			setting.sound = "iosSound.caf"; // the sound file which must be packaged in your .ipa file
+			//Initialize firebase core
+			Firebase.init();
 			
+			//Initialize firebase realtime database
+			DB.init();
+			
+			trace("loaded: Firebase Core ANE & Firebase Realtime DB ANE");
 			
 		}
 		

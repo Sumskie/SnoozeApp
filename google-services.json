@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "272513942436",
+    "firebase_url": "https://snoozeapp-88b67.firebaseio.com",
+    "project_id": "snoozeapp-88b67",
+    "storage_bucket": "snoozeapp-88b67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272513942436:android:cd1bae820382c1d4",
+        "android_client_info": {
+          "package_name": "air.com.site.SnoozeApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272513942436-jregetok0fmn6qgoc5q827ntbks41ubq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd037EDjn-cCNAhO1tL0EPJgFb2Q0FvkM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

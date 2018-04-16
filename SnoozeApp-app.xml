@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <!-- 
 	Usage:
 
@@ -16,7 +16,7 @@
 	<text xml:lang="ja">Japanese App name goes here</text>
 	</name>
 -->
-<application xmlns="http://ns.adobe.com/air/application/26.0">
+<application xmlns="http://ns.adobe.com/air/application/29.0">
   <id>SnoozeApp</id>
   <versionNumber>1.0.0</versionNumber>
   <versionLabel/>
@@ -32,13 +32,126 @@
     <fullScreen>false</fullScreen>
     <aspectRatio>portrait</aspectRatio>
     <renderMode>direct</renderMode>
-  </initialWindow>
+    <autoOrients>false</autoOrients></initialWindow>
   <icon/>
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
-  <depthAndStencil>true</depthAndStencil>
+  
+  
+  
+  
+  
+  
+  
+  <android>
+    <manifestAdditions><![CDATA[<manifest>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.WAKE_LOCK"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.c2dm.permission.RECEIVE"/>
+<uses-permission android:name="android.permission.irebaseCore.permission.C2D_MESSAGE"/>
+
+<!-- 
+		Required by firebase_iid.ane 
+		Change "air.com.doitflash.firebaseCore" to your own app package name
+	-->
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<permission android:name="air.com.site.SnoozeApp.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+	<uses-permission android:name="air.com.site.SnoozeApp.permission.C2D_MESSAGE" />
+	
+	<application>
+		
+		<activity>
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<category android:name="android.intent.category.DEFAULT" />
+				
+				<!-- Change "air.com.doitflash.firebaseCore" to your own app package name -->
+				<data android:scheme="air.com.site.SnoozeApp" />
+			</intent-filter>
+		</activity>
+		
+		<!-- 
+			Required by the firebase_common.ane 
+			Change "air.com.doitflash.firebaseCore" to your own app package name
+		-->
+		<provider
+			android:name="com.google.firebase.provider.FirebaseInitProvider"
+			android:authorities="air.com.site.SnoozeApp.firebaseinitprovider"
+			android:exported="false"
+			android:initOrder="100" />
+			
+		<service
+			android:name="com.myflashlab.firebase.core.MyFirebaseInstanceIdService"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+			</intent-filter>
+		</service>
+		
+		<!-- Required by the googlePlayServices_basement.ane -->
+		<meta-data 
+			android:name="com.google.android.gms.version" 
+			android:value="@integer/google_play_services_version" />
+		
+		<!-- 
+			Required by firebase_iid.ane 
+			Change "air.com.doitflash.firebaseCore" to your own app package name
+		-->
+		<receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="air.com.site.SnoozeApp" />
+            </intent-filter>
+        </receiver>
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+		<service android:name="com.google.firebase.iid.FirebaseInstanceIdService" android:exported="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+		
+		<!-- Required by googlePlayServices_base.ane -->
+		<activity android:name="com.google.android.gms.common.api.GoogleApiActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:exported="false"/>
+		 
+	</application>
+
+</manifest>]]></manifestAdditions>
+  </android>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <extensions>
+    <extensionID>com.myflashlab.air.extensions.localNotification</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.tasks</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.firebase.common</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.firebase.iid</extensionID>
+    <extensionID>com.myflashlab.air.extensions.firebase.core</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.appinvite</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.base</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.basement</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.firebase.database</extensionID>
+    <extensionID>com.myflashlab.air.extensions.dependency.firebase.database.connection</extensionID>
+    <extensionID>com.myflashlab.air.extensions.firebase.realtimeDB</extensionID>
+  </extensions>
 </application>
-
-
-<!-- overrideAir.ane -->
-<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
