@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <!-- 
 	Usage:
 
@@ -19,7 +19,7 @@
 <application xmlns="http://ns.adobe.com/air/application/29.0">
   <id>SnoozeApp</id>
   <versionNumber>1.0.0</versionNumber>
-  <versionLabel/>
+  <versionLabel></versionLabel>
   <filename>SnoozeApp</filename>
   <description/>
   <name>SnoozeApp</name>
@@ -123,14 +123,11 @@
 		<activity android:name="com.google.android.gms.common.api.GoogleApiActivity"
                   android:theme="@android:style/Theme.Translucent.NoTitleBar"
                   android:exported="false"/>
-		 
+		  
 	</application>
 
 </manifest>]]></manifestAdditions>
   </android>
-  
-  
-  
   
   
   
